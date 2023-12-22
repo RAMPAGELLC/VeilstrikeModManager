@@ -128,11 +128,11 @@ Feature-dependent methods:
 - `load_mp3(path: String)` [Load MP3] - loads a MP3 audio stream
 
 ### Modding API
-You are prohibited from unpacking and decompile the scripts on Operation Veilstrike. All assets are copyrighted. Make sure your mods don't infringe the copyright by e.g. sharing some assets. Veilstrike runs 4.2, so select 4.x for mods.
+You are prohibited from unpacking or decompile the scripts on Operation Veilstrike. All assets are copyrighted. Make sure your mods don't infringe the copyright. Veilstrike runs 4.2, so select 4.x for mods. Assets may be re-used within Veilstrike, however they cannot be distributed without approval by a Veilstrike Developer.
 
 Modding API: https://github.com/RAMPAGELLC/VeilstrikeLuaSDK/blob/main/Veilstrike.lua
 
-At moment there is no GDScript API, only Lua. However, there is some functions with GDScript you can perform such as replacing levels, etc.
+At moment there is no extensive GDScript or Lua API. However, there is some functions with GDScript you can perform such as replacing levels, etc.
 
 ```GDScript
 func _initialize(scene_tree: SceneTree) -> void:
