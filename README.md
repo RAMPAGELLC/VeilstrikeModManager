@@ -2,6 +2,8 @@
 
 App for managing and creating mods for any Godot game, without needing to modify any of its files. Works with Godot 2, 3 and 4.
 
+This is a fork of https://github.com/KoBeWi/Godot-Universal-Mod-Manager/tree/master, we modified this for Lua support, VeilstrikeLuaSDK and the VeilstrikeGDScriptSDK for modding.
+
 ## How does this work
 
 The manager takes advantage of two facts:
@@ -108,6 +110,8 @@ You can use the `scene_tree` argument to e.g. inject custom nodes into scene tre
 |Load MP3|✖|✔¹|✔
 |Load WAV²|✖|✖|✖
 |Load GLTF²|✖|✖|✖
+|Load FBX²|✖|✖|✖
+|Load FBX/OBJ²|✖|✖|✖
 
 ¹Since 3.3
 
@@ -124,23 +128,15 @@ Feature-dependent methods:
 - `load_mp3(path: String)` [Load MP3] - loads a MP3 audio stream
 
 ### Modding API
+You are prohibited from unpacking and decompile the scripts on Operation Veilstrike. All assets are copyrighted. Make sure your mods don't infringe the copyright by e.g. sharing some assets. Veilstrike runs 4.2, so select 4.x for mods.
 
-While GUMM does not require any modding support provided by the game, adding one would make modders' life easier. If you want to provide a modding API compatible with GUMM, all it requires is adding some methods available from a singleton. Provide this information to modders and they will be able to call these methods from the `mod.gd` file. For example:
+Modding API: https://github.com/RAMPAGELLC/VeilstrikeLuaSDK/blob/main/Veilstrike.lua
+
+At moment there is no GDScript API, only Lua. However, there is some functions with GDScript you can perform such as replacing levels, etc.
+
 ```GDScript
 func _initialize(scene_tree: SceneTree) -> void:
     var level = load_resource("mod://Level1.tscn")
 	replace_resource_at("res://NewLevel.tscn", level)
     Globals.add_level("res://NewLevel.tscn")
 ```
-
-### No Modding API
-
-If the developer does not provide any modding API, you are on your own. Unless the game is protected, it's easy to unpack and decompile the scripts. Once you unpack the project, you can run it using your own Godot executable, which makes testing much easier. Opening the project in editor is more difficult, as the source assets need to be extracted first.
-
-Keep in mind that, unless the project is open-source (which makes hacky modding pointless tbh), all assets are copyrighted. While personal use for modding purposes is *probably ok*, make sure your mods don't infringe the copyright by e.g. sharing some assets.
-
-## Examples
-
-GUMM comes with example mods for 3 games: Lumencraft, Spooky Ghosts Dot Com, Blastronaut Demo. Lumencraft has a free demo (mod-compatible), but Spooky Ghosts requires you to own the game if you want to see the mod in action.
-
-The game entries are located in GameInfo directory. You can use these mods as a reference on how your mods can work and take note of some *advanced modding techniques* (like manual file copying or node injection).
