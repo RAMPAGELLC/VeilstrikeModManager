@@ -1,0 +1,237 @@
+[gd_scene load_steps=7 format=3 uid="uid://jykr2g2kil0d"]
+
+[ext_resource type="Script" path="res://Scenes/Main.gd" id="1_tstig"]
+[ext_resource type="Texture2D" uid="uid://s0pfm6agi7gy" path="res://Textures/Add.svg" id="1_ypae8"]
+[ext_resource type="PackedScene" uid="uid://o4ix83ajmoe2" path="res://Nodes/PathEdit.tscn" id="4_w173i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n6qfb"]
+font_size = 25
+
+[sub_resource type="GDScript" id="GDScript_llbit"]
+script/source = "extends Label
+
+func _ready() -> void:
+	text += preload(\"res://version.gd\").VERSION
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_ssoat"]
+font_size = 12
+
+[node name="Main" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("1_tstig")
+metadata/_edit_vertical_guides_ = []
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Veilstrike Mod Manager"
+label_settings = SubResource("LabelSettings_n6qfb")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "v."
+horizontal_alignment = 1
+script = SubResource("GDScript_llbit")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Game List"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="GameList" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Import Game"
+icon = ExtResource("1_ypae8")
+expand_icon = true
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Create Game Entry"
+icon = ExtResource("1_ypae8")
+expand_icon = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -305.0
+offset_top = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Mod Manager by KoBeWi, Modified for Veilstrike.lua"
+label_settings = SubResource("LabelSettings_ssoat")
+horizontal_alignment = 1
+
+[node name="AddGame" type="AcceptDialog" parent="."]
+unique_name_in_owner = true
+title = "Add Game Entry"
+size = Vector2i(616, 185)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="AddGame"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 608.0
+offset_bottom = 136.0
+
+[node name="VBoxContainer" type="GridContainer" parent="AddGame/VBoxContainer2"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="AddGame/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Descriptor Path"
+
+[node name="ImportPath" parent="AddGame/VBoxContainer2/VBoxContainer" instance=ExtResource("4_w173i")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label5" type="Label" parent="AddGame/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Game Path"
+
+[node name="ImportGame" parent="AddGame/VBoxContainer2/VBoxContainer" instance=ExtResource("4_w173i")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Control" type="Control" parent="AddGame/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="CopyLocal" type="CheckBox" parent="AddGame/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Copy Descriptor?"
+
+[node name="AddError" type="Label" parent="AddGame/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CreateGame" type="AcceptDialog" parent="."]
+title = "Create Game Entry"
+size = Vector2i(616, 357)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CreateGame"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 608.0
+offset_bottom = 308.0
+
+[node name="VBoxContainer" type="GridContainer" parent="CreateGame/VBoxContainer2"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="CreateGame/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Game Title"
+
+[node name="CreateTitle" type="LineEdit" parent="CreateGame/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label5" type="Label" parent="CreateGame/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Icon"
+
+[node name="CreateIcon" parent="CreateGame/VBoxContainer2/VBoxContainer" instance=ExtResource("4_w173i")]
+unique_name_in_owner = true
+layout_mode = 2
+mode = 1
+
+[node name="Label2" type="Label" parent="CreateGame/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Godot Version"
+
+[node name="CreateVersion" type="OptionButton" parent="CreateGame/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+item_count = 3
+selected = 2
+popup/item_0/text = "2.x"
+popup/item_0/id = 0
+popup/item_1/text = "3.x"
+popup/item_1/id = 1
+popup/item_2/text = "4.x"
+popup/item_2/id = 2
+
+[node name="Label3" type="Label" parent="CreateGame/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Main Scene"
+
+[node name="CreateScene" type="LineEdit" parent="CreateGame/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label4" type="Label" parent="CreateGame/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Game Path"
+
+[node name="CreateDirectory" parent="CreateGame/VBoxContainer2/VBoxContainer" instance=ExtResource("4_w173i")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CreateError" type="Label" parent="CreateGame/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DeleteConfirm" type="ConfirmationDialog" parent="."]
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="on_add_game_entry"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="on_create_game_entry"]
+[connection signal="confirmed" from="AddGame" to="." method="import_game_entry"]
+[connection signal="text_changed" from="AddGame/VBoxContainer2/VBoxContainer/ImportPath" to="." method="validate_add"]
+[connection signal="text_changed" from="AddGame/VBoxContainer2/VBoxContainer/ImportGame" to="." method="validate_add"]
+[connection signal="confirmed" from="CreateGame" to="." method="create_game_entry"]
+[connection signal="text_changed" from="CreateGame/VBoxContainer2/VBoxContainer/CreateTitle" to="." method="validate_create" unbinds=1]
+[connection signal="text_changed" from="CreateGame/VBoxContainer2/VBoxContainer/CreateIcon" to="." method="validate_create"]
+[connection signal="text_changed" from="CreateGame/VBoxContainer2/VBoxContainer/CreateScene" to="." method="validate_create" unbinds=1]
+[connection signal="text_changed" from="CreateGame/VBoxContainer2/VBoxContainer/CreateDirectory" to="." method="validate_create"]
+[connection signal="confirmed" from="DeleteConfirm" to="." method="remove_game" binds= [true, true]]
