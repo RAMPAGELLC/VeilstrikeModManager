@@ -79,10 +79,19 @@ func Run()-> void:
 
         var lua_libraries = ["base", "coroutine", "string", "table", "math", "utf8", "debug", "io", "os", "package"];
         lua.bind_libraries(lua_libraries)
+		
         coroutine.push_variant("sleep", wait_for_object)
         coroutine.push_variant("print", LuaPrint)
         coroutine.push_variant("warn", LuaWarn)
         coroutine.push_variant("error", LuaError)
+		
+        coroutine.push_variant("VeilstrikeFlag", VeilstrikeFlag)
+        coroutine.push_variant("VeilstrikeClient", VeilstrikeClient)
+        coroutine.push_variant("VeilstrikeDev", VeilstrikeDev)
+        coroutine.push_variant("VeilstrikeAdmin", VeilstrikeAdmin)
+        coroutine.push_variant("VeilstrikeMod", VeilstrikeMod)
+        coroutine.push_variant("VeilstrikeHost", VeilstrikeHost)
+
         coroutine.load_string(LuaSource)
         Ready = true
 
