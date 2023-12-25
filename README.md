@@ -131,6 +131,7 @@ Feature-dependent methods:
 You are prohibited from unpacking or decompile the scripts on Operation Veilstrike. All assets are copyrighted. Make sure your mods don't infringe the copyright. Veilstrike runs 4.2, so select 4.x for mods. Assets may be re-used within Veilstrike, however they cannot be distributed without approval by a Veilstrike Developer.
 
 Modding API: https://github.com/RAMPAGELLC/VeilstrikeLuaSDK/blob/main/Veilstrike.lua
+Veilstrike Assets Templates: https://github.com/RAMPAGELLC/VeilstrikeAssets/tree/main
 
 At moment there is no extensive GDScript or Lua API. However, there is some functions with GDScript you can perform such as replacing levels, etc.
 
