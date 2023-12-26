@@ -85,12 +85,12 @@ func Run()-> void:
         coroutine.push_variant("warn", LuaWarn)
         coroutine.push_variant("error", LuaError)
 		
-        coroutine.push_variant("VeilstrikeFlag", VeilstrikeFlag)
-        coroutine.push_variant("VeilstrikeClient", VeilstrikeClient)
-        coroutine.push_variant("VeilstrikeDev", VeilstrikeDev)
-        coroutine.push_variant("VeilstrikeAdmin", VeilstrikeAdmin)
-        coroutine.push_variant("VeilstrikeMod", VeilstrikeMod)
-        coroutine.push_variant("VeilstrikeHost", VeilstrikeHost)
+        coroutine.push_variant("VeilstrikeFlag", VeilstrikeFlag.new(true))
+        coroutine.push_variant("VeilstrikeClient", VeilstrikeClient.new(true))
+        coroutine.push_variant("VeilstrikeDev", VeilstrikeDev.new(true))
+        coroutine.push_variant("VeilstrikeAdmin", VeilstrikeAdmin.new(true))
+        coroutine.push_variant("VeilstrikeMod", VeilstrikeMod.new(true))
+        coroutine.push_variant("VeilstrikeHost", VeilstrikeHost.new(true))
 
         coroutine.load_string(LuaSource)
         Ready = true
